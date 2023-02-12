@@ -1,26 +1,18 @@
-pipeline{
-    agent any
-      tools {
-        maven 'maven-3.6.3'
-      }
-        stages{
-            stage("build"){
-                steps{
-                echo "building the application "
-                 sh 'mvn clean package'
+node {
+  stage("Clone the project") {
+    git branch: 'dev', url: 'https://github.com/naresh546nk/spring-boot-validator.git'
+  }
 
-                }
-            }
-            stage("test"){
-                steps{
-                    echo "testing the application "
-                }
-            }
-            stage("deploy"){
-                steps{
-                    echo "deploying the application "
-                }
-            }
+  stage("Compilation") {
+    sh "./mvnw clean install -DskipTests"
+  }
 
-        }
+  stage("Tests and Deployment") {
+    stage("Runing unit tests") {
+      sh "./mvnw test -Punit"
+    }
+    stage("Deployment") {
+      sh 'nohup ./mvnw spring-boot:run -Dserver.port=8001 &'
+    }
+  }
 }
