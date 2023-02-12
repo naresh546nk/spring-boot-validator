@@ -4,6 +4,7 @@ node {
   }
 
   stage("Compilation") {
+    sh "chmod +777 mvnw*"
     sh "./mvnw clean install -DskipTests"
   }
 
