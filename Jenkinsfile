@@ -21,7 +21,7 @@ node {
       sh "./mvnw test"
     }
     stage("Push to dockerHub") {
-      sh 'docker login -u naresh546 -p ${docker-password}'
+      sh 'docker ps'
     }
   }
 }
