@@ -5,15 +5,15 @@ node {
 
   stage("Compilation") {
     sh "chmod +777 mvnw*"
-    sh "./mvnw clean install -DskipTests"
+    sh "./mvnw clean install"
   }
 
   stage("Tests and Deployment") {
     stage("Runing unit tests") {
-      sh "./mvnw test -Punit"
+      sh "./mvnw test"
     }
     stage("Deployment") {
-      sh 'nohup ./mvnw spring-boot:run -Dserver.port=8001 &'
+      sh './mvnw spring-boot:run -Dserver.port=8001 &'
     }
   }
 }
