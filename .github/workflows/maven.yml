@@ -38,3 +38,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-validation:build-${{ github.run_number }}
+    - name: Running Image in docker container
+      run: docker run -p 8081:8081 -d  --restart=always ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-validation:build-${{ github.run_number }}
