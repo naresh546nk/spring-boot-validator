@@ -21,8 +21,8 @@ node {
     stage("Runing unit tests") {
       sh "./mvnw test"
     }
-    stage("Push to dockerHub") {
-      sh 'docker -v'
+    stage("Build Image") {
+      sh 'mvn spring-boot:build-image'
     }
   }
 }
