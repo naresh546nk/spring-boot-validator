@@ -1,4 +1,5 @@
 node {
+
      stage('Initialize')
     {
         def dockerHome = tool 'docker'
@@ -21,7 +22,7 @@ node {
       sh "./mvnw test"
     }
     stage("Push to dockerHub") {
-      sh 'docker ps'
+      sh 'docker -v'
     }
   }
 }
