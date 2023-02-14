@@ -1,10 +1,14 @@
 version: 0.2
 
 phases:
+  Test:
+    commands:
+      - echo Running test cases...
+      - mvn test
   build:
     commands:
       - echo Entered the build phase...
-      - mvn clean package
+      - mvn clean install
   post_build:
     commands:
       - echo Build completed successfully
