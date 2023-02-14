@@ -10,5 +10,5 @@ phases:
       - echo Build completed successfully
 artifacts:
   files:
-    - target/spring-boot-validator-0.0.1-SNAPSHORT.jar
+    - target/spring-boot-validator.jar
   discard-paths: yes
