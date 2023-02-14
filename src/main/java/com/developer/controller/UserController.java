@@ -19,6 +19,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String home(){
+        return  "Application is running fine on port : 8081" ;
+    }
+
     @GetMapping("users")
     public List<User> getAllUsers(){
         return userService.getUsers();
